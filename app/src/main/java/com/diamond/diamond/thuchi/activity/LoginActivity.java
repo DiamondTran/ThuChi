@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.diamond.diamond.thuchi.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -18,13 +19,21 @@ import com.google.android.gms.tasks.Task;
 public class LoginActivity extends AppCompatActivity {
 private GoogleSignInClient mGoogleSignInClient;
 private SignInButton signInButton;
+private Button btnlog;
 int RC_SIGN_IN=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
+         signInButton = findViewById(R.id.sign_in_button);
+         btnlog= findViewById(R.id.login);
+         btnlog.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
+             }
+         });
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
