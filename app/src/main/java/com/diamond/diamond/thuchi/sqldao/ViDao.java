@@ -63,7 +63,7 @@ public class ViDao {
     public long deleteVi(String mavi) {
         long result = -1;
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        result = sqLiteDatabase.delete(VI_TABLE, VI_MA + "=",
+        result = sqLiteDatabase.delete(VI_TABLE, VI_MA + "=?",
                 new String[]{mavi});
         return result;
     }

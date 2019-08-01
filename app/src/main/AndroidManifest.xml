@@ -8,10 +8,46 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.InforthuActivity"
+            android:label="@string/title_activity_inforthu"
+            android:parentActivityName=".activity.ThuActivity"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.diamond.diamond.thuchi.activity.ThuActivity" />
+        </activity>
+        <activity
+            android:name=".activity.InforViActivity"
+            android:label="@string/title_activity_infor_vi"
+            android:parentActivityName=".activity.ViActivity"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.diamond.diamond.thuchi.activity.ViActivity" />
+        </activity>
+        <activity
+            android:name=".activity.ViActivity"
+            android:label="@string/title_activity_vi"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.diamond.diamond.thuchi.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.AddViActivity"
+            android:label="@string/title_activity_add_vi"
+            android:parentActivityName=".activity.ViActivity"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.diamond.diamond.thuchi.activity.ViActivity" />
+        </activity>
         <activity
             android:name=".activity.AddKCActivity"
             android:label="@string/title_activity_add_kc"

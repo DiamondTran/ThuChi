@@ -11,7 +11,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:src="@drawable/images"/>
 
@@ -58,12 +58,33 @@
             android:inputType="number"/>
 
     </android.support.design.widget.TextInputLayout>
-
-    <EditText
-        android:id="@+id/edtdate"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginLeft="5dp"
+            android:text="Chọn ví"/>
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/spiner"
+            ></Spinner>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/edtdatet"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:ems="10"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
         android:hint="Chọn ngày"
         android:inputType="textPersonName" />
     <android.support.design.widget.TextInputLayout

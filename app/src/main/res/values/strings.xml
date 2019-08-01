@@ -6,7 +6,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="vi">Ví</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -20,4 +20,8 @@
     <string name="title_activity_note">Ghi Chú</string>
     <string name="title_activity_add_kt">Thêm Khoản Thu</string>
     <string name="title_activity_add_kc">AddKCActivity</string>
+    <string name="title_activity_add_vi">AddViActivity</string>
+    <string name="title_activity_vi">ViActivity</string>
+    <string name="title_activity_infor_vi">InforViActivity</string>
+    <string name="title_activity_inforthu">InforthuActivity</string>
 </resources>

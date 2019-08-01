@@ -8,11 +8,12 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.AddKCActivity"
     tools:showIn="@layout/activity_add_kc">
+
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
-        android:src="@drawable/images"/>
+        android:src="@drawable/images" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_firstName"
@@ -24,8 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mã Khoản Chi"
-            android:maxLength="20"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:maxLength="20" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:hint="Tên Khoản Chi"
 
-            android:inputType="text"/>
+            android:inputType="text" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -54,10 +55,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Số tiền"
-            android:inputType="number"/>
+            android:inputType="number" />
 
     </android.support.design.widget.TextInputLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginLeft="5dp"
+            android:text="Chọn ví"/>
+<Spinner
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:id="@+id/spiner"
+    ></Spinner>
+    </LinearLayout>
     <EditText
         android:id="@+id/edtdate"
         android:layout_width="match_parent"
@@ -65,6 +85,7 @@
         android:ems="10"
         android:hint="Chọn ngày"
         android:inputType="textPersonName" />
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text"
         android:layout_width="match_parent"
@@ -75,32 +96,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ghi chú"
-            android:inputType="text"/>
+            android:inputType="text" />
 
     </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_margin="10dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btnadd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:id="@+id/btnadd"
 
-            android:textColor="#ffffff"
-            android:text="Thêm"/>
+            android:text="Thêm"
+            android:textColor="#ffffff" />
+
         <Button
+            android:id="@+id/btncacal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
             android:background="@color/colorPrimary"
-            android:textColor="#ffffff"
-            android:id="@+id/btncacal"
-            android:text="Hủy"/>
+            android:text="Hủy"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 </LinearLayout>
