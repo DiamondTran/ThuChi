@@ -27,7 +27,7 @@ int RC_SIGN_IN=0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
          signInButton = findViewById(R.id.sign_in_button);
-         btnlog= findViewById(R.id.login);
+         btnlog= findViewById(R.id.ogin);
          btnlog.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
