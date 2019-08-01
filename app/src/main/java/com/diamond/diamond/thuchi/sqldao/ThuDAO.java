@@ -76,7 +76,7 @@ public class ThuDAO {
     public long deleteThu(String mathu) {
         long result = -1;
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        result = sqLiteDatabase.delete(THU_TABLE, THU_MA + "=",
+        result = sqLiteDatabase.delete(THU_TABLE, THU_MA + "=?",
                 new String[]{mathu});
         return result;
     }

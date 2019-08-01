@@ -60,7 +60,7 @@
 
            android:id="@+id/ogin"
             android:layout_gravity="center"
-            android:background="#7052f0"
+            android:background="@color/colorPrimary"
             android:textColor="#ffffff"
             android:text="Đăng nhập"
             tools:ignore="OnClick" />
