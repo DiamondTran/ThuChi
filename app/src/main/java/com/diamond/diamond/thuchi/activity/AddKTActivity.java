@@ -37,6 +37,7 @@ private EditText edttien;
 private EditText edtnote;
 private Button btnadd;
 private Spinner spinner;
+
 private Button btncancal;
 private ViDao viDao;
 private List<String> namevis;
