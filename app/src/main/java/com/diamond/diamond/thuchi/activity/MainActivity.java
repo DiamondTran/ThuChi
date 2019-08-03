@@ -111,7 +111,10 @@ GoogleSignInClient mGoogleSignInClient;
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(MainActivity.this, ViActivity.class));
+        } else if (id == R.id.chuyentien){
+            startActivity(new Intent(MainActivity.this,ChuyentienActivity.class));
         }
+
 
         return super.onOptionsItemSelected(item);
     }

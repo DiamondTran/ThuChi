@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activity.ChuyentienActivity"
+    tools:showIn="@layout/activity_chuyentien">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_marginTop="40dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+     <TextView
+         android:layout_width="wrap_content"
+         android:textSize="20sp"
+         android:layout_marginLeft="40dp"
+         android:layout_height="wrap_content"
+         android:text="Chọn ví"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:id="@+id/spchuyen1"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:textSize="20sp"
+        ></Spinner>
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="40dp"
+            android:layout_height="wrap_content"
+            android:text="Số dư: "/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="200dp"
+           android:textSize="20sp"
+           android:id="@+id/tienchuyen"
+           android:text="0000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+
+            android:layout_height="wrap_content"
+            android:text=" vnd"/>
+
+    </LinearLayout>
+    <android.support.design.widget.TextInputLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtsotienc"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_height="wrap_content"
+            android:hint="Số tiền cần chuyển"
+            android:layout_marginRight="40dp"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginLeft="40dp"
+            android:layout_height="wrap_content"
+            android:text="Chọn ví"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:id="@+id/spchuyen2"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:textSize="20sp"
+            ></Spinner>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#ffff"
+        android:background="@color/colorPrimary"
+        android:text="Chuyển
+"/>
+</LinearLayout>

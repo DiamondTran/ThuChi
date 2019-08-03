@@ -13,6 +13,15 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.ChuyentienActivity"
+            android:label="@string/title_activity_chuyentien"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.diamond.diamond.thuchi.activity.MainActivity" />
+        </activity>
+        <activity
             android:name=".activity.InforChiActivity"
             android:label="@string/title_activity_infor_chi"
             android:parentActivityName=".activity.ChiActivity"

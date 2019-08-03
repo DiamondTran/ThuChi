@@ -139,11 +139,13 @@ public class AddKCActivity extends AppCompatActivity {
                 chi.date = edtdate.getText().toString();
                 chi.machi = edtmakc.getText().toString();
                 chi.note = edtnote.getText().toString();
+
+
                 if (chi.machi.matches("")) {
                     edtmakc.setError("Không được nhập trống");
                 } else if (chi.namechi.matches("")) {
                     edttenkc.setError("Không được nhập trống");
-                } else if (chi.sotien.matches("")) {
+                } else if (edttenkc.equals("")) {
                     edttienc.setError("Không được nhập trống");
                 } else if (chi.date.matches("")) {
                     edtdate.setError("Không được nhập trống");
@@ -153,7 +155,7 @@ public class AddKCActivity extends AppCompatActivity {
                     edtnote.setError("Không được nhập trống");
                 } else {
                     chiDAO.insertChi(chi);
-                    Toast.makeText(AddKCActivity.this, "Thêm Thành công"+chi.namechi, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddKCActivity.this, "Thêm Thành công", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddKCActivity.this, ChiActivity.class));
                 }
             }

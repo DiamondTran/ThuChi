@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -20,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 private GoogleSignInClient mGoogleSignInClient;
 private SignInButton signInButton;
 private Button btnlog;
+private EditText nameuser;
+private EditText pass;
 int RC_SIGN_IN=0;
 
     @Override
@@ -28,10 +32,17 @@ int RC_SIGN_IN=0;
         setContentView(R.layout.activity_login);
          signInButton = findViewById(R.id.sign_in_button);
          btnlog= findViewById(R.id.ogin);
+         nameuser= findViewById(R.id.edtnameuser);
+         pass= findViewById(R.id.edtpass);
          btnlog.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                 if (nameuser.equals("admin") && pass.equals("123456")){
+                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                 }else {
+                     Toast.makeText(LoginActivity.this, "Thông tin đăng nhập sai", Toast.LENGTH_SHORT).show();
+                 }
+
              }
          });
         signInButton.setSize(SignInButton.SIZE_STANDARD);
