@@ -24,4 +24,5 @@
     <string name="title_activity_vi">ViActivity</string>
     <string name="title_activity_infor_vi">InforViActivity</string>
     <string name="title_activity_inforthu">InforthuActivity</string>
+    <string name="title_activity_infor_chi">InforChiActivity</string>
 </resources>

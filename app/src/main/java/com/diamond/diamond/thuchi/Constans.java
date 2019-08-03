@@ -30,9 +30,6 @@ public class Constans {
 
     //khai báo bảng khoản chi
     public static final String CHI_TABLE = "khoanchi";
-
-
-
     public static final String CHI_MA = "Makchi";
 
     public static final String CHI_NAME = "name";

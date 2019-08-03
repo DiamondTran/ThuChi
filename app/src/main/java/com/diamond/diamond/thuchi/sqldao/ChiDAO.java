@@ -19,12 +19,7 @@ import static com.diamond.diamond.thuchi.Constans.CHI_NAME;
 import static com.diamond.diamond.thuchi.Constans.CHI_TABLE;
 import static com.diamond.diamond.thuchi.Constans.CHI_TEN_VI;
 import static com.diamond.diamond.thuchi.Constans.CHI_TIEN;
-import static com.diamond.diamond.thuchi.Constans.THU_DATE;
-import static com.diamond.diamond.thuchi.Constans.THU_GHI_CHU;
-import static com.diamond.diamond.thuchi.Constans.THU_MA;
-import static com.diamond.diamond.thuchi.Constans.THU_NAME;
-import static com.diamond.diamond.thuchi.Constans.THU_TABLE;
-import static com.diamond.diamond.thuchi.Constans.THU_TIEN;
+
 
 public class ChiDAO {
     private DBHelper dbHelper;
@@ -76,7 +71,7 @@ public class ChiDAO {
     public long deleteChi(String machi) {
         long result = -1;
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        result = sqLiteDatabase.delete(CHI_TABLE, CHI_MA + "=",
+        result = sqLiteDatabase.delete(CHI_TABLE, CHI_MA + "=?",
                 new String[]{machi});
         return result;
     }

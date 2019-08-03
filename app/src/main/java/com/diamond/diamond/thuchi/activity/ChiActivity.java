@@ -5,13 +5,24 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.diamond.diamond.thuchi.R;
+import com.diamond.diamond.thuchi.adapter.AdapterChi;
+import com.diamond.diamond.thuchi.model.chi;
+import com.diamond.diamond.thuchi.sqldao.ChiDAO;
+
+import java.util.List;
 
 public class ChiActivity extends AppCompatActivity {
-
+    private RecyclerView recyc;
+    private AdapterChi adapterChi;
+    private LinearLayoutManager linearLayoutManager;
+    private List<chi> chiList;
+    private ChiDAO chiDao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +38,14 @@ public class ChiActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        chiDao= new ChiDAO(ChiActivity.this);
+        recyc= findViewById(R.id.recyclerview);
+        chiList= chiDao.getALLChi();
+        adapterChi= new AdapterChi(this,chiList);
+        linearLayoutManager= new LinearLayoutManager(this);
+        recyc.setLayoutManager(linearLayoutManager);
+        recyc.setAdapter(adapterChi);
+        adapterChi.notifyDataSetChanged();
     }
 
 }
