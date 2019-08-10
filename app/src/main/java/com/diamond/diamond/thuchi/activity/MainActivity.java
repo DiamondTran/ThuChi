@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.diamond.diamond.thuchi.R;
+import com.diamond.diamond.thuchi.model.Thu;
+import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,22 +29,30 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-private ImageView img;
-private TextView tvnameuser;
-private TextView tvtmailuser;
-View hview;
+    private ImageView img;
+    private TextView tvnameuser;
+    private TextView tvtmailuser,sodu;
+    View hview;
 
+    int a, tong = 0;
+    ArrayList<Integer> integers = new ArrayList<>();
+    private ThuDAO thuDao;
+    private List<Thu> thus;
+    GoogleSignInClient mGoogleSignInClient;
 
-GoogleSignInClient mGoogleSignInClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
-
-
+        tongthu();
+        sodu= findViewById(R.id.sodu);
+        sodu.setText(String.valueOf(tong));
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -60,13 +70,11 @@ GoogleSignInClient mGoogleSignInClient;
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        hview= navigationView.getHeaderView(0);
-        tvnameuser=(TextView) hview.findViewById(R.id.tvname);
-        tvtmailuser=(TextView) hview.findViewById(R.id.tvemail);
-        img=(ImageView) hview.findViewById(R.id.imguser);
+        hview = navigationView.getHeaderView(0);
+        tvnameuser = (TextView) hview.findViewById(R.id.tvname);
+        tvtmailuser = (TextView) hview.findViewById(R.id.tvemail);
+        img = (ImageView) hview.findViewById(R.id.imguser);
         navigationView.setNavigationItemSelectedListener(this);
-
-
 
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
@@ -77,8 +85,8 @@ GoogleSignInClient mGoogleSignInClient;
             String personEmail = acct.getEmail();
             String personId = acct.getId();
             Uri personPhoto = acct.getPhotoUrl();
-         tvnameuser.setText(personName);
-         tvtmailuser.setText(personEmail);
+            tvnameuser.setText(personName);
+            tvtmailuser.setText(personEmail);
             Glide.with(this).load(String.valueOf(personPhoto)).into(img);
 
         }
@@ -111,8 +119,8 @@ GoogleSignInClient mGoogleSignInClient;
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(MainActivity.this, ViActivity.class));
-        } else if (id == R.id.chuyentien){
-            startActivity(new Intent(MainActivity.this,ChuyentienActivity.class));
+        } else if (id == R.id.chuyentien) {
+            startActivity(new Intent(MainActivity.this, ChuyentienActivity.class));
         }
 
 
@@ -125,20 +133,19 @@ GoogleSignInClient mGoogleSignInClient;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_chi) {
-
+        if (id == R.id.nav_chi) {
+            startActivity(new Intent(MainActivity.this, ChiActivity.class));
         } else if (id == R.id.nav_thu) {
-
+            startActivity(new Intent(MainActivity.this, ThuActivity.class));
         } else if (id == R.id.nav_tools) {
+            signOut();
+        } else if (id == R.id.nav_infor) {
 
-        }  else if (id == R.id.nav_infor) {
-
-        }else if (id == R.id.nav_thongke) {
-
+        } else if (id == R.id.nav_thongke) {
+            startActivity(new Intent(MainActivity.this, ChiActivity.class));
         } else if (id == R.id.nav_exit) {
-                    signOut();
+
+            finish();
 
         }
 
@@ -146,13 +153,14 @@ GoogleSignInClient mGoogleSignInClient;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     private void signOut() {
         mGoogleSignInClient.signOut()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(MainActivity.this, "Siged out successful", Toast.LENGTH_SHORT).show();
-                  finish();
+                        finish();
                     }
                 });
     }
@@ -171,5 +179,20 @@ GoogleSignInClient mGoogleSignInClient;
 
     public void note(View view) {
         startActivity(new Intent(MainActivity.this, NoteActivity.class));
+    }
+
+    private void tongthu() {
+        Thu thu;
+        thuDao = new ThuDAO(MainActivity.this);
+        thus = thuDao.getALLThu();
+        for (int i = 0; i < thus.size(); i++) {
+            thu = thus.get(i);
+            a = Integer.parseInt(thu.date);
+            integers.add(a);
+        }
+        for (Integer element : integers) {
+            tong += element;
+
+        }
     }
 }

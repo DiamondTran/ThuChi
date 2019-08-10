@@ -19,27 +19,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
-import com.diamond.diamond.thuchi.activity.AddKTActivity;
-import com.diamond.diamond.thuchi.activity.InforViActivity;
 import com.diamond.diamond.thuchi.activity.InforthuActivity;
-import com.diamond.diamond.thuchi.model.Vi;
-import com.diamond.diamond.thuchi.model.thu;
+import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.sqldao.ThuDAO;
-import com.diamond.diamond.thuchi.sqldao.ViDao;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterThu extends RecyclerView.Adapter<AdapterThu.ViewHolder> {
     private Context context;
-    private List<thu> thus;
+    private List<Thu> thus;
     private ThuDAO thuDAO;
     private EditText edtmat,edtnamet,edttient,edtnott;
     private TextView tvngay;
     private Spinner sp;
     private List<String> namethus;
-    private List<thu> thuss;
-    public AdapterThu(Context context, List<thu> thus) {
+    private List<Thu> thuss;
+    public AdapterThu(Context context, List<Thu> thus) {
         this.context = context;
         this.thus = thus;
     }
@@ -126,7 +122,7 @@ public class AdapterThu extends RecyclerView.Adapter<AdapterThu.ViewHolder> {
                     public void onClick(DialogInterface dialog, int which) {
 
                         thuDAO = new ThuDAO(context);
-                        final thu thu = new thu();
+                        final Thu thu = new Thu();
                         thu.mathu = edtmat.getText().toString();
                         thu.namethu= edtnamet.getText().toString();
                         thu.sotien= edttient.getText().toString();
@@ -134,7 +130,7 @@ public class AdapterThu extends RecyclerView.Adapter<AdapterThu.ViewHolder> {
                         thu.date = tvngay.getText().toString();
 
                         namethus= new ArrayList<>();
-                       thu thu1;
+                       Thu thu1;
                         thuDAO= new ThuDAO(context);
                         thuss= thuDAO.getALLThu();
                         for (int i=0;i<thuss.size();i++){
@@ -181,7 +177,7 @@ public class AdapterThu extends RecyclerView.Adapter<AdapterThu.ViewHolder> {
         public TextView tvtenthu, tvtenvi, tvsotien, tvngaythang;
         public ImageView imgedit, imgdele;
         public CardView cardView;
-        public thu thu;
+        public Thu thu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

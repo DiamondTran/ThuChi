@@ -25,6 +25,8 @@
             android:id="@+id/edtmakc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:hint="Mã Khoản Chi"
             android:inputType="text"
             android:maxLength="20" />
@@ -34,6 +36,8 @@
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_lastName"
         android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
 
         <EditText
@@ -49,6 +53,8 @@
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_email"
         android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
 
         <EditText
@@ -63,6 +69,8 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content">
         <TextView
@@ -74,8 +82,8 @@
 <Spinner
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:id="@+id/spiner"
     ></Spinner>
     </LinearLayout>
@@ -85,13 +93,16 @@
         android:layout_height="30dp"
         android:ems="10"
         android:textSize="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Chọn ngày"
         android:inputType="textPersonName" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text"
         android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
 
         <EditText
@@ -108,6 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
+
         android:orientation="horizontal">
 
         <Button

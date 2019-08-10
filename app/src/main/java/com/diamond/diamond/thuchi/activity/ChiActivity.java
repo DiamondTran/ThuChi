@@ -3,7 +3,6 @@ package com.diamond.diamond.thuchi.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,7 @@ import android.view.View;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.adapter.AdapterChi;
-import com.diamond.diamond.thuchi.model.chi;
+import com.diamond.diamond.thuchi.model.Chi;
 import com.diamond.diamond.thuchi.sqldao.ChiDAO;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class ChiActivity extends AppCompatActivity {
     private RecyclerView recyc;
     private AdapterChi adapterChi;
     private LinearLayoutManager linearLayoutManager;
-    private List<chi> chiList;
+    private List<Chi> chiList;
     private ChiDAO chiDao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

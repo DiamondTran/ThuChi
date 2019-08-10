@@ -1,6 +1,6 @@
 package com.diamond.diamond.thuchi.model;
 
-public class thu {
+public class Thu {
     public String mathu;
     public String namethu;
     public String sotien;

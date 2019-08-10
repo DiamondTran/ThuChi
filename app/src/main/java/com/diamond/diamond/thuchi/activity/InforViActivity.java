@@ -18,7 +18,9 @@ import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.adapter.AdapterVi;
+import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.model.Vi;
+import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 import com.diamond.diamond.thuchi.sqldao.ViDao;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ import java.util.List;
 
 public class InforViActivity extends AppCompatActivity {
     private TextView tvma, tvname, tvtongthu, tvtongchi;
-    String ma, name;
+    String ma, name,tongthu;
 
 
 
@@ -50,12 +52,15 @@ public class InforViActivity extends AppCompatActivity {
 
         ma = getIntent().getStringExtra("ma");
         name = getIntent().getStringExtra("name");
+        tongthu = getIntent().getStringExtra("tongthu");
         tvma.setText(ma);
         tvname.setText(name);
+        tvtongthu.setText(tongthu);
 
 
 
 
     }
+
 
 }

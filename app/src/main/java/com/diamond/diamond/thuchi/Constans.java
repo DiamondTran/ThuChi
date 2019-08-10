@@ -3,7 +3,7 @@ package com.diamond.diamond.thuchi;
 public class Constans {
     public static final boolean isDEBUG = true;
 
-    //khai báo bảng khoản thu
+    //khai báo bảng khoản Thu
     public static final String THU_TABLE = "khoanthu";
 
 
@@ -28,7 +28,7 @@ public class Constans {
             ")";
 
 
-    //khai báo bảng khoản chi
+    //khai báo bảng khoản Chi
     public static final String CHI_TABLE = "khoanchi";
     public static final String CHI_MA = "Makchi";
 
@@ -43,9 +43,12 @@ public class Constans {
             "" + CHI_MA + " NVARCHAR(50)," +
             "" + CHI_NAME + " NVARCHAR(100)," +
             "" + CHI_DATE + " NVARCHAR(20)," +
+            "" + CHI_TEN_VI + " NVARCHAR(20)," +
             "" + CHI_TIEN + " NCHAR(20)," +
             "" + CHI_GHI_CHU + " NVARCHAR(200)" +
             ")";
+
+
 
     //khai báo bảng ví
     public static final String VI_TABLE = "vi";
@@ -69,6 +72,19 @@ public class Constans {
             ")";
 
 
+    //bảng ghi chú
+    public static final String GHICHU_TABLE = "ghichu";
+    public static final String GHICHU_TEN = "tenghichu";
+    public static final String GHICHU_DATE = "tenghichu";
 
+    public static final String GHICHU_NOIDUNG = "noidung";
+
+
+    public static final String CREATE_GHICHU_TABLE="CREATE TABLE "+ GHICHU_TABLE +"(" +
+            "" + GHICHU_TEN + " NVARCHAR(50)," +
+            "" + GHICHU_NOIDUNG + " NVARCHAR(50)," +
+
+            "" + GHICHU_DATE + " NVARCHAR(50)" +
+            ")";
 
 }

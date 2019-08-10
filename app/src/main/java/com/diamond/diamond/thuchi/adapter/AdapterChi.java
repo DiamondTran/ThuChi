@@ -20,8 +20,7 @@ import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.activity.InforChiActivity;
-import com.diamond.diamond.thuchi.model.chi;
-import com.diamond.diamond.thuchi.model.thu;
+import com.diamond.diamond.thuchi.model.Chi;
 import com.diamond.diamond.thuchi.sqldao.ChiDAO;
 
 import java.util.ArrayList;
@@ -34,9 +33,9 @@ public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
     private EditText edtmat,edtnamet,edttient,edtnott;
     private List<String> namechis;
     private Context context;
-    private List<chi> chis;
-    private List<chi> chiss;
-    public AdapterChi(Context context, List<chi> chis) {
+    private List<Chi> chis;
+    private List<Chi> chiss;
+    public AdapterChi(Context context, List<Chi> chis) {
         this.context = context;
         this.chis = chis;
     }
@@ -123,7 +122,7 @@ public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
                     public void onClick(DialogInterface dialog, int which) {
 
                         chiDAO = new ChiDAO(context);
-                        final chi chi = new chi();
+                        final Chi chi = new Chi();
                         chi.machi = edtmat.getText().toString();
                         chi.namechi= edtnamet.getText().toString();
                         chi.sotien= edttient.getText().toString();
@@ -131,7 +130,7 @@ public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
                         chi.date = tvngay.getText().toString();
 
                         namechis= new ArrayList<>();
-                        chi chi1;
+                        Chi chi1;
                         chiDAO= new ChiDAO(context);
                         chiss= chiDAO.getALLChi();
                         for (int i=0;i<chiss.size();i++){
@@ -177,7 +176,7 @@ public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
         public TextView tvtenchi, tvtenvi, tvsotien, tvngaythang;
         public ImageView imgedit, imgdele;
         public CardView cardView;
-        public chi chi;
+        public Chi chi;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

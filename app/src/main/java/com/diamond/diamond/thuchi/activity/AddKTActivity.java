@@ -3,15 +3,12 @@ package com.diamond.diamond.thuchi.activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -20,7 +17,7 @@ import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.model.Vi;
-import com.diamond.diamond.thuchi.model.thu;
+import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 import com.diamond.diamond.thuchi.sqldao.ViDao;
 
@@ -130,7 +127,7 @@ private void add(){;
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                thu thu = new thu();
+                Thu thu = new Thu();
                 ThuDAO thuDAO= new ThuDAO(AddKTActivity.this);
                 thu.namethu = edttenkt.getText().toString();
                 thu.tenvi= tenvi;

@@ -6,18 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.diamond.diamond.thuchi.database.DBHelper;
-import com.diamond.diamond.thuchi.model.chi;
-import com.diamond.diamond.thuchi.model.thu;
+import com.diamond.diamond.thuchi.model.Thu;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.diamond.diamond.thuchi.Constans.CHI_DATE;
-import static com.diamond.diamond.thuchi.Constans.CHI_GHI_CHU;
-import static com.diamond.diamond.thuchi.Constans.CHI_MA;
-import static com.diamond.diamond.thuchi.Constans.CHI_NAME;
-import static com.diamond.diamond.thuchi.Constans.CHI_TABLE;
-import static com.diamond.diamond.thuchi.Constans.CHI_TIEN;
 import static com.diamond.diamond.thuchi.Constans.THU_DATE;
 import static com.diamond.diamond.thuchi.Constans.THU_GHI_CHU;
 import static com.diamond.diamond.thuchi.Constans.THU_MA;
@@ -34,7 +27,7 @@ public class ThuDAO {
 
     }
 
-    public long insertThu(thu thu) {
+    public long insertThu(Thu thu) {
         long result = -1;
         ContentValues contentValues = new ContentValues();
         contentValues.put(THU_MA, thu.mathu);
@@ -53,7 +46,7 @@ public class ThuDAO {
         return result;
     }
 
-    public long updateThu(thu thu) {
+    public long updateThu(Thu thu) {
         long result = -1;
         ContentValues contentValues = new ContentValues();
         contentValues.put(THU_MA, thu.mathu);
@@ -81,8 +74,8 @@ public class ThuDAO {
         return result;
     }
 
-    public List<thu> getALLThu() {
-        List<thu> thus = null;
+    public List<Thu> getALLThu() {
+        List<Thu> thus = null;
         String QUERY = "SELECT * FROM " + THU_TABLE;
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(QUERY, null);
@@ -97,7 +90,7 @@ public class ThuDAO {
                 String datethu = cursor.getString(cursor.getColumnIndex(THU_DATE));
                 String vithu = cursor.getString(cursor.getColumnIndex(THU_TEN_VI));
                 String notethu = cursor.getString(cursor.getColumnIndex(THU_GHI_CHU));
-                thu thu = new thu();
+                Thu thu = new Thu();
                 thu.mathu = mathu;
                 thu.namethu = namethu;
                 thu.date = tienthu;

@@ -6,8 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.diamond.diamond.thuchi.database.DBHelper;
-import com.diamond.diamond.thuchi.model.chi;
-import com.diamond.diamond.thuchi.model.thu;
+import com.diamond.diamond.thuchi.model.Chi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ public class ChiDAO {
 
     }
 
-    public long insertChi(chi chi) {
+    public long insertChi(Chi chi) {
         long result = -1;
         ContentValues contentValues = new ContentValues();
         contentValues.put(CHI_MA, chi.machi);
@@ -48,7 +47,7 @@ public class ChiDAO {
         return result;
     }
 
-    public long updateChi(chi chi) {
+    public long updateChi(Chi chi) {
         long result = -1;
         ContentValues contentValues = new ContentValues();
         contentValues.put(CHI_MA, chi.machi);
@@ -76,8 +75,8 @@ public class ChiDAO {
         return result;
     }
 
-    public List<chi> getALLChi() {
-        List<chi> chis = null;
+    public List<Chi> getALLChi() {
+        List<Chi> chis = null;
         String QUERY = "SELECT * FROM " + CHI_TABLE;
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(QUERY, null);
@@ -92,7 +91,7 @@ public class ChiDAO {
                 String datechi = cursor.getString(cursor.getColumnIndex(CHI_DATE));
                 String vichi = cursor.getString(cursor.getColumnIndex(CHI_TEN_VI));
                 String notechi = cursor.getString(cursor.getColumnIndex(CHI_GHI_CHU));
-                chi chi = new chi();
+                Chi chi = new Chi();
                 chi.machi = machi;
                 chi.namechi = namechi;
                 chi.date = datechi;

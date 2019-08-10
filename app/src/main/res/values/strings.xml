@@ -25,5 +25,5 @@
     <string name="title_activity_infor_vi">Thông tin ví</string>
     <string name="title_activity_inforthu">Thông tin khoản thu</string>
     <string name="title_activity_infor_chi">Thông tin khoản chi</string>
-    <string name="title_activity_chuyentien">ChuyentienActivity</string>
+    <string name="title_activity_chuyentien">Chuyển tiền</string>
 </resources>

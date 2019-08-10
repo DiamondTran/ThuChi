@@ -40,7 +40,7 @@ int RC_SIGN_IN=0;
                  if (nameuser.equals("admin") && pass.equals("123456")){
                      startActivity(new Intent(LoginActivity.this,MainActivity.class));
                  }else {
-                     Toast.makeText(LoginActivity.this, "Thông tin đăng nhập sai", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(LoginActivity.this, "Thông tin tài khoản hoặc mật khẩu sai", Toast.LENGTH_SHORT).show();
                  }
 
              }

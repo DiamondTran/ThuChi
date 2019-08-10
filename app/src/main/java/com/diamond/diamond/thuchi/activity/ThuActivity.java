@@ -11,11 +11,8 @@ import android.view.View;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.adapter.AdapterThu;
-import com.diamond.diamond.thuchi.adapter.AdapterVi;
-import com.diamond.diamond.thuchi.model.Vi;
-import com.diamond.diamond.thuchi.model.thu;
+import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.sqldao.ThuDAO;
-import com.diamond.diamond.thuchi.sqldao.ViDao;
 
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class ThuActivity extends AppCompatActivity {
     private RecyclerView recyc;
     private AdapterThu adapterThu;
     private LinearLayoutManager linearLayoutManager;
-    private List<thu> thus;
+    private List<Thu> thus;
     private ThuDAO thDao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

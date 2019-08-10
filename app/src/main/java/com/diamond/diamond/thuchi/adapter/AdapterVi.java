@@ -54,6 +54,7 @@ viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
         Intent intent= new Intent(context, InforViActivity.class);
 intent.putExtra("ma",viewHolder.vi.mavi);
 intent.putExtra("name",viewHolder.vi.tenvi);
+intent.putExtra("tongthu",viewHolder.vi.tongthu);
 context.startActivity(intent);
 
     }

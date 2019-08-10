@@ -3,8 +3,6 @@ package com.diamond.diamond.thuchi.activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,10 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
+import com.diamond.diamond.thuchi.model.Chi;
 import com.diamond.diamond.thuchi.model.Vi;
-import com.diamond.diamond.thuchi.model.chi;
 import com.diamond.diamond.thuchi.sqldao.ChiDAO;
-import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 import com.diamond.diamond.thuchi.sqldao.ViDao;
 
 import java.text.SimpleDateFormat;
@@ -131,7 +128,7 @@ public class AddKCActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                chi chi = new chi();
+                Chi chi = new Chi();
                 ChiDAO chiDAO = new ChiDAO(AddKCActivity.this);
                 chi.namechi = edttenkc.getText().toString();
                 chi.tenvi = tenvi;
