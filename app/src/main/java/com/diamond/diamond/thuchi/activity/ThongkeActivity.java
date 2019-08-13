@@ -30,7 +30,7 @@ import java.util.List;
 
 public class ThongkeActivity extends AppCompatActivity {
 private static String TAG ="ThongkeActivity";
-private float[] ydata= {40.5f,59.5f};
+
 private String[] xdata= {"Thu","Chi"};
 PieChart pieChart;
     int b, tongchi = 0,tong=0;
@@ -40,6 +40,8 @@ PieChart pieChart;
     private ThuDAO thuDao;
     private ChiDAO chiDAO;
     private List<Chi> chis;
+    float c;
+    float v;
     private List<Thu> thus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +56,15 @@ PieChart pieChart;
     pieChart.setCenterText("Thu Chi");
     pieChart.setCenterTextSize(10);
 //    pieChart.setDrawEntryLabels(true);
+        tongthu();
       addDataSet();
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void addDataSet() {
+        float[] ydata= {c,v};
         ArrayList<PieEntry> yEntry= new ArrayList<>();
         ArrayList<String> xEntry= new ArrayList<>();
 
@@ -70,12 +75,13 @@ PieChart pieChart;
             xEntry.add(xdata[i]);
         }
 
-        PieDataSet pieDataSet= new PieDataSet(yEntry, "Thu");
+        PieDataSet pieDataSet= new PieDataSet(yEntry, "");
         pieDataSet.setSliceSpace(2);
+
         pieDataSet.setValueTextSize(12);
 
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.GRAY);
+        colors.add(Color.GREEN);
         colors.add(Color.BLUE);
 
         pieDataSet.setColors(colors);
@@ -115,7 +121,10 @@ PieChart pieChart;
             tongthu += element;
 
         }
-        tong = tongthu- tongchi;
+        tong = tongthu + tongchi;
+
+        c= (float) tongthu/tong*100;
+         v=(float) tongchi/tong*100;
     }
 
 }
