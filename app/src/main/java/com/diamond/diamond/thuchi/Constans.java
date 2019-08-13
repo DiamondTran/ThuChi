@@ -43,7 +43,7 @@ public class Constans {
             "" + CHI_MA + " NVARCHAR(50)," +
             "" + CHI_NAME + " NVARCHAR(100)," +
             "" + CHI_DATE + " NVARCHAR(20)," +
-            "" + CHI_TEN_VI + " NVARCHAR(20)," +
+//            "" + CHI_TEN_VI + " NVARCHAR(20)," +
             "" + CHI_TIEN + " NCHAR(20)," +
             "" + CHI_GHI_CHU + " NVARCHAR(200)" +
             ")";

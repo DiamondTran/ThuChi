@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.activity.InforChiActivity;
+import com.diamond.diamond.thuchi.activity.UpdattChiActivity;
 import com.diamond.diamond.thuchi.model.Chi;
 import com.diamond.diamond.thuchi.sqldao.ChiDAO;
 
@@ -54,14 +55,14 @@ public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
         viewHolder.tvtenvi.setText(viewHolder.chi.tenvi);
         viewHolder.tvsotien.setText(viewHolder.chi.sotien);
         viewHolder.tvngaythang.setText(viewHolder.chi.date);
-
+        viewHolder.tvtenvi.setText("Tiết kiệm");
 
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, InforChiActivity.class);
                 intent.putExtra("machi", viewHolder.chi.machi);
-                intent.putExtra("tenthu", viewHolder.chi.namechi);
+                intent.putExtra("tenchi", viewHolder.chi.namechi);
                 intent.putExtra("sotien", viewHolder.chi.sotien);
                 intent.putExtra("ngay", viewHolder.chi.date);
                 intent.putExtra("sovi", viewHolder.chi.tenvi);
@@ -96,71 +97,14 @@ public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
         viewHolder.imgedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Cập nhật");
-                final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View viewDialog = inflater.inflate(R.layout.activity_add_kt, null);
-                edtmat = viewDialog.findViewById(R.id.edtmakt);
-                edtnamet = viewDialog.findViewById(R.id.edtnamekt);
-                edtnott = viewDialog.findViewById(R.id.edtnote);
-                edttient = viewDialog.findViewById(R.id.edtsotien);
-                sp= viewDialog.findViewById(R.id.spiner);
-                tvngay= viewDialog.findViewById(R.id.edtdatet);
+             Intent intent= new Intent(context, UpdattChiActivity.class);
+                intent.putExtra("machi", viewHolder.chi.machi);
+                intent.putExtra("tenchi", viewHolder.chi.namechi);
+                intent.putExtra("sotien", viewHolder.chi.sotien);
+             intent.putExtra("ngay",viewHolder.chi.date);
+                intent.putExtra("note", viewHolder.chi.note);
+             context.startActivity(intent);
 
-
-
-                edtmat.setText(chis.get(i).machi);
-                edtnamet.setText(chis.get(i).namechi);
-                edttient.setText(chis.get(i).sotien);
-                edtnott.setText(chis.get(i).note);
-
-                tvngay.setText(chis.get(i).date);
-
-
-                builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        chiDAO = new ChiDAO(context);
-                        final Chi chi = new Chi();
-                        chi.machi = edtmat.getText().toString();
-                        chi.namechi= edtnamet.getText().toString();
-                        chi.sotien= edttient.getText().toString();
-                        chi.note = edtnott.getText().toString();
-                        chi.date = tvngay.getText().toString();
-
-                        namechis= new ArrayList<>();
-                        Chi chi1;
-                        chiDAO= new ChiDAO(context);
-                        chiss= chiDAO.getALLChi();
-                        for (int i=0;i<chiss.size();i++){
-                            chi1= chiss.get(i);
-                            namechis.add(chi1.tenvi);
-                        }
-                        ArrayAdapter<String> adapter = new ArrayAdapter(context,android.R.layout.simple_spinner_item,namechis);
-                        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-                        sp.setAdapter(adapter);
-                        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                chi.tenvi= sp.getSelectedItem().toString();
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parent) {
-
-                            }
-                        });
-
-                        chiDAO.updateChi(chi);
-
-                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-
-                        notifyDataSetChanged();
-                    }
-                });
-                builder.setView(viewDialog);
-                builder.show();
             }
         });
     }
@@ -185,7 +129,7 @@ public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
                 tvsotien = itemView.findViewById(R.id.sotien);
                 tvngaythang = itemView.findViewById(R.id.datechi);
                 imgdele= itemView.findViewById(R.id.imgdelete);
-                imgedit= itemView.findViewById(R.id.imgedit);
+                imgedit= itemView.findViewById(R.id.imgeditc);
             cardView = itemView.findViewById(R.id.cradviewchi);
 
         }

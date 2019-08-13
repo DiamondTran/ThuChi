@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activity.UpdattChiActivity"></activity>
+        <activity android:name=".activity.UpdatethuActivity" />
         <activity
             android:name=".activity.ChuyentienActivity"
             android:label="@string/title_activity_chuyentien"

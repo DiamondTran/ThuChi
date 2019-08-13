@@ -1,15 +1,12 @@
 package com.diamond.diamond.thuchi.activity;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,14 +18,12 @@ import com.diamond.diamond.thuchi.model.Vi;
 import com.diamond.diamond.thuchi.sqldao.ChiDAO;
 import com.diamond.diamond.thuchi.sqldao.ViDao;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-public class AddKCActivity extends AppCompatActivity {
+public class UpdattChiActivity extends AppCompatActivity {
     private TextView edtdate;
-    private EditText edtmakc;
+    private TextView edtmakc;
     private EditText edttenkc;
     private EditText edttienc;
     private Spinner spinner;
@@ -39,52 +34,15 @@ public class AddKCActivity extends AppCompatActivity {
     private List<Vi> vis;
     private Button btncancal;
     String tenvi;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_kc);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        init();
-        Spinner();
-        chonngay();
-        add();
-
-
-
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    private void chonngay() {
-        Thread t = new Thread(){
-        @Override
-            public  void run(){
-            try{
-                while (!isInterrupted()){
-                    Thread.sleep(1000);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                        long date = System.currentTimeMillis();
-                        SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyy\nhh mm ss a");
-                         String  dateString= sdf.format(date);
-                         edtdate.setText(dateString);
-                        }
-                    });
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        };
-        t.start();
+        setContentView(R.layout.activity_updatt_chi);
+ init();
+ spinner();
+ add();
 
     }
-
     private void init() {
         edtdate = findViewById(R.id.edtdatet);
         edtmakc = findViewById(R.id.edtmakc);
@@ -95,22 +53,24 @@ public class AddKCActivity extends AppCompatActivity {
         btncancal = findViewById(R.id.btncacal);
         spinner = findViewById(R.id.spiner);
 
+         edtmakc.setText(getIntent().getStringExtra("machi"));
+        edttenkc.setText(getIntent().getStringExtra("tenchi"));
+        edtdate.setText(getIntent().getStringExtra("ngay"));
+        edttienc.setText(getIntent().getStringExtra("sotien"));
+        edtnote.setText(getIntent().getStringExtra("note"));
+
         btncancal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edtdate.setText("");
-                edtmakc.setText("");
-                edtnote.setText("");
-                edttenkc.setText("");
-                edttienc.setText("");
+           startActivity(new Intent(UpdattChiActivity.this,ChiActivity.class));
+           finish();
             }
         });
     }
-
-    private void Spinner() {
+    private void spinner() {
         Vi vi;
         namevis = new ArrayList<>();
-        viDao = new ViDao(AddKCActivity.this);
+        viDao = new ViDao(UpdattChiActivity.this);
         vis = viDao.getALLVi();
         for (int i = 0; i < vis.size(); i++) {
             vi = vis.get(i);
@@ -133,14 +93,13 @@ public class AddKCActivity extends AppCompatActivity {
 
 
     }
-
     private void add() {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Chi chi = new Chi();
-                ChiDAO chiDAO = new ChiDAO(AddKCActivity.this);
+                ChiDAO chiDAO = new ChiDAO(UpdattChiActivity.this);
                 chi.namechi = edttenkc.getText().toString();
                 chi.sotien = edttienc.getText().toString();
                 chi.date = edtdate.getText().toString();
@@ -159,14 +118,14 @@ public class AddKCActivity extends AppCompatActivity {
                 }  else if (chi.note.matches("")) {
                     edtnote.setError("Không được nhập trống");
                 } else {
-                    chiDAO.insertChi(chi);
-                    Toast.makeText(AddKCActivity.this, "Thêm Thành công", Toast.LENGTH_SHORT).show();
-                    Intent intent= new Intent(AddKCActivity.this, ChiActivity.class);
-                    intent.putExtra("tenvi",tenvi);
-                    AddKCActivity.this.startActivity(intent);
+                    chiDAO.updateChi(chi);
+                    Toast.makeText(UpdattChiActivity.this, "Thêm Thành công", Toast.LENGTH_SHORT).show();
+                    Intent intent= new Intent(UpdattChiActivity.this, ChiActivity.class);
+                    startActivity(intent);
+
+
                 }
             }
         });
     }
-
 }

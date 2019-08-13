@@ -6,21 +6,16 @@
     android:id="@+id/craviewvi"
     android:layout_margin="5dp"
     android:layout_height="wrap_content">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/vi"
+            android:id="@+id/imgvi"
             android:layout_margin="10dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-            android:orientation="vertical"
-            >
 
             <TextView
                 android:id="@+id/namevi"
@@ -28,28 +23,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Tên ví"
+                android:layout_toRightOf="@id/imgvi"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imgvi"
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"
-
+                    android:layout_below="@id/namevi"
                 android:id="@+id/sotien"
                 android:text="Số tiền"/>
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+
+
             <ImageView
             android:layout_width="wrap_content"
                 android:id="@+id/imgedit"
+                android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
                 android:layout_margin="10dp"
             android:src="@drawable/edit"/>
@@ -57,9 +50,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imgdelete"
+                android:layout_alignParentRight="true"
                 android:layout_margin="10dp"
+                android:layout_below="@id/imgedit"
                 android:src="@drawable/delete"/>
-        </LinearLayout>
 
-    </LinearLayout>
+
+    </RelativeLayout>
 </android.support.v7.widget.CardView>

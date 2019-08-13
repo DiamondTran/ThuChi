@@ -17,14 +17,29 @@ import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.activity.InforViActivity;
+import com.diamond.diamond.thuchi.activity.MainActivity;
+import com.diamond.diamond.thuchi.model.Chi;
+import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.model.Vi;
+import com.diamond.diamond.thuchi.sqldao.ChiDAO;
+import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 import com.diamond.diamond.thuchi.sqldao.ViDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterVi extends RecyclerView.Adapter<AdapterVi.ViewHolder> {
-    private EditText edtma,edtname;
+    private EditText edtname;
     public Context context;
+    TextView  edtma;
+    int b, tongchi = 0,tong=0;
+    int a, tongthu = 0;
+    ArrayList<Integer> integers = new ArrayList<>();
+    ArrayList<Integer> integerss = new ArrayList<>();
+    private ThuDAO thuDao;
+    private ChiDAO chiDAO;
+    private List<Chi> chis;
+    private List<Thu> thus;
     public List<Vi> vis;
     ViDao viDao;
 
@@ -44,8 +59,23 @@ public class AdapterVi extends RecyclerView.Adapter<AdapterVi.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final AdapterVi.ViewHolder viewHolder, final int i) {
+              tongthu();
+
+
+
              viewHolder.vi=vis.get(i);
+//        viDao = new ViDao(context);
+//        Vi vi = new Vi();
+//        vi.mavi = viewHolder.vi.mavi;
+//        vi.tenvi = viewHolder.vi.tenvi;
+//        vi.tongthu= String.valueOf(tongthu);
+//        vi.tongchi= String.valueOf(tongchi);
+//        viDao.updateVi(vi);
+//        notifyDataSetChanged();
+
              viewHolder.tvnamevi.setText(viewHolder.vi.tenvi);
+             viewHolder.tvsotien.setText(String.valueOf(tong));
+
 
 
 viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +85,7 @@ viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
 intent.putExtra("ma",viewHolder.vi.mavi);
 intent.putExtra("name",viewHolder.vi.tenvi);
 intent.putExtra("tongthu",viewHolder.vi.tongthu);
+intent.putExtra("tongchi",viewHolder.vi.tongchi);
 context.startActivity(intent);
 
     }
@@ -106,7 +137,8 @@ viewHolder.imgedit.setOnClickListener(new View.OnClickListener() {
                 Vi vi = new Vi();
                 vi.mavi= edtma.getText().toString();
                 vi.tenvi = edtname.getText().toString();
-
+                vi.tongthu= String.valueOf(tongthu);
+                vi.tongchi= String.valueOf(tongchi);
                 viDao.updateVi(vi);
 
                 Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
@@ -142,5 +174,33 @@ viewHolder.imgedit.setOnClickListener(new View.OnClickListener() {
      imgdelete = itemView.findViewById(R.id.imgdelete);
      imgedit= itemView.findViewById(R.id.imgedit);
         }
+    }
+    private void tongthu() {
+        Thu thu;
+        thuDao = new ThuDAO(context);
+        thus = thuDao.getALLThu();
+        for (int i = 0; i < thus.size(); i++) {
+            thu = thus.get(i);
+            a = Integer.parseInt(thu.date);
+            integers.add(a);
+        }
+        for (Integer element : integers) {
+            tongthu += element;
+
+        }
+        Chi chi;
+        chiDAO = new ChiDAO(context);
+        chis= chiDAO.getALLChi();
+        for (int j =0; j<chis.size(); j ++){
+            chi = chis.get(j);
+            b = Integer.parseInt(chi.sotien);
+            integerss.add(b);
+        }
+        for (Integer element : integerss) {
+            tongchi += element;
+
+        }
+
+        tong = tongthu- tongchi;
     }
 }

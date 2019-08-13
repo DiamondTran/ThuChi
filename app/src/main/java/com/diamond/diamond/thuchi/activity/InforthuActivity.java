@@ -1,11 +1,13 @@
 package com.diamond.diamond.thuchi.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.diamond.diamond.thuchi.R;
@@ -13,6 +15,7 @@ import com.diamond.diamond.thuchi.R;
 public class InforthuActivity extends AppCompatActivity {
 private TextView tvmathu,tvnamethu,tvsotien,tvngay,tvghichu,tvvi;
 String ma,name,date,note,tien,vi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +23,6 @@ String ma,name,date,note,tien,vi;
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         tvmathu= findViewById(R.id.mathu);
         tvnamethu= findViewById(R.id.namethu);
@@ -45,5 +47,12 @@ String ma,name,date,note,tien,vi;
 
 
     }
+
+//        intent.putExtra("mathu",ma);
+//        intent.putExtra("tenthu",name);
+//        intent.putExtra("ngay",date);
+//        intent.putExtra("note",note);
+//        intent.putExtra("sotien",tien);
+
 
 }

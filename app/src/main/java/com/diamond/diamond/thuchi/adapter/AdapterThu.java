@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.activity.InforthuActivity;
+import com.diamond.diamond.thuchi.activity.UpdatethuActivity;
 import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 
@@ -30,11 +31,8 @@ public class AdapterThu extends RecyclerView.Adapter<AdapterThu.ViewHolder> {
     private Context context;
     private List<Thu> thus;
     private ThuDAO thuDAO;
-    private EditText edtmat,edtnamet,edttient,edtnott;
-    private TextView tvngay;
-    private Spinner sp;
-    private List<String> namethus;
-    private List<Thu> thuss;
+
+
     public AdapterThu(Context context, List<Thu> thus) {
         this.context = context;
         this.thus = thus;
@@ -96,71 +94,13 @@ public class AdapterThu extends RecyclerView.Adapter<AdapterThu.ViewHolder> {
         viewHolder.imgedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Cập nhật");
-                final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View viewDialog = inflater.inflate(R.layout.activity_add_kt, null);
-                edtmat = viewDialog.findViewById(R.id.edtmakt);
-                edtnamet = viewDialog.findViewById(R.id.edtnamekt);
-                edtnott = viewDialog.findViewById(R.id.edtnote);
-                edttient = viewDialog.findViewById(R.id.edtsotien);
-                sp= viewDialog.findViewById(R.id.spiner);
-                tvngay= viewDialog.findViewById(R.id.edtdatet);
-
-
-
-                edtmat.setText(thus.get(i).mathu);
-                edtnamet.setText(thus.get(i).namethu);
-                edttient.setText(thus.get(i).sotien);
-                edtnott.setText(thus.get(i).note);
-
-                tvngay.setText(thus.get(i).date);
-
-
-                builder.setPositiveButton("Cập nhật", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        thuDAO = new ThuDAO(context);
-                        final Thu thu = new Thu();
-                        thu.mathu = edtmat.getText().toString();
-                        thu.namethu= edtnamet.getText().toString();
-                        thu.sotien= edttient.getText().toString();
-                        thu.note = edtnott.getText().toString();
-                        thu.date = tvngay.getText().toString();
-
-                        namethus= new ArrayList<>();
-                       Thu thu1;
-                        thuDAO= new ThuDAO(context);
-                        thuss= thuDAO.getALLThu();
-                        for (int i=0;i<thuss.size();i++){
-                            thu1= thuss.get(i);
-                            namethus.add(thu1.tenvi);
-                        }
-                        ArrayAdapter<String> adapter = new ArrayAdapter(context,android.R.layout.simple_spinner_item,namethus);
-                        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-                        sp.setAdapter(adapter);
-                        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                            @Override
-                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                thu.tenvi= sp.getSelectedItem().toString();
-                            }
-
-                            @Override
-                            public void onNothingSelected(AdapterView<?> parent) {
-
-                            }
-                        });
-
-                        thuDAO.updateThu(thu);
-
-                        Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-
-                        notifyDataSetChanged();
-                    }
-                });
-                builder.setView(viewDialog);
-                builder.show();
+                      Intent intent= new Intent(context, UpdatethuActivity.class);
+                intent.putExtra("mathu", viewHolder.thu.mathu);
+                intent.putExtra("tenthu", viewHolder.thu.namethu);
+                intent.putExtra("sotien", viewHolder.thu.sotien);
+                intent.putExtra("ngay", viewHolder.thu.date);
+                intent.putExtra("note", viewHolder.thu.note);
+                context.startActivity(intent);
             }
         });
     }

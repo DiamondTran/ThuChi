@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.diamond.diamond.thuchi.R;
+import com.diamond.diamond.thuchi.model.Chi;
 import com.diamond.diamond.thuchi.model.Thu;
+import com.diamond.diamond.thuchi.sqldao.ChiDAO;
 import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -37,10 +39,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView tvnameuser;
     private TextView tvtmailuser,sodu;
     View hview;
-
-    int a, tong = 0;
+      int b, tongchi = 0,tong=0;
+    int a, tongthu = 0;
     ArrayList<Integer> integers = new ArrayList<>();
+    ArrayList<Integer> integerss = new ArrayList<>();
     private ThuDAO thuDao;
+    private ChiDAO chiDAO;
+    private List<Chi> chis;
     private List<Thu> thus;
     GoogleSignInClient mGoogleSignInClient;
 
@@ -84,10 +89,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             String personFamilyName = acct.getFamilyName();
             String personEmail = acct.getEmail();
             String personId = acct.getId();
-            Uri personPhoto = acct.getPhotoUrl();
+
             tvnameuser.setText(personName);
             tvtmailuser.setText(personEmail);
-            Glide.with(this).load(String.valueOf(personPhoto)).into(img);
+
+            Glide.with(this).load(acct.getPhotoUrl()).into(img);
 
         }
     }
@@ -144,8 +150,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_thongke) {
             startActivity(new Intent(MainActivity.this, ChiActivity.class));
         } else if (id == R.id.nav_exit) {
-
-            finish();
+moveTaskToBack(true);
+android.os.Process.killProcess(android.os.Process.myPid());
+System.exit(1);
 
         }
 
@@ -160,25 +167,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(MainActivity.this, "Siged out successful", Toast.LENGTH_SHORT).show();
-                        finish();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                      finish();
                     }
                 });
     }
 
     public void thu(View view) {
         startActivity(new Intent(MainActivity.this, ThuActivity.class));
+
     }
 
     public void chi(View view) {
         startActivity(new Intent(MainActivity.this, ChiActivity.class));
+
     }
 
     public void thongke(View view) {
         startActivity(new Intent(MainActivity.this, ThongkeActivity.class));
+
     }
 
     public void note(View view) {
         startActivity(new Intent(MainActivity.this, NoteActivity.class));
+
     }
 
     private void tongthu() {
@@ -190,9 +202,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             a = Integer.parseInt(thu.date);
             integers.add(a);
         }
-        for (Integer element : integers) {
-            tong += element;
+
+        Chi chi;
+        chiDAO = new ChiDAO(MainActivity.this);
+        chis= chiDAO.getALLChi();
+        for (int j =0; j<chis.size(); j ++){
+            chi = chis.get(j);
+            b = Integer.parseInt(chi.sotien);
+            integerss.add(b);
+        }
+        for (Integer element : integerss) {
+            tongchi += element;
 
         }
+        for (Integer element : integers) {
+            tongthu += element;
+
+        }
+        tong = tongthu- tongchi;
     }
 }

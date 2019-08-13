@@ -3,67 +3,75 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
     android:background="#ffffff"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activity.AddKTActivity"
-    tools:showIn="@layout/activity_add_kt">
-
+    android:layout_height="match_parent"
+    tools:context=".activity.UpdattChiActivity">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:src="@drawable/images"/>
+        android:src="@drawable/images" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/text_firstName"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        <EditText
-            android:id="@+id/edtmakt"
+            android:text="Mã khoản chi: " />
+        <TextView
+            android:id="@+id/edtmakc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mã Khoản Thu"
-            android:maxLength="20"
+            android:textSize="18sp"
+            android:textColor="#f85959"
             android:inputType="text"/>
-
-    </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_lastName"
         android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edtnamekt"
+            android:id="@+id/edtnamekc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tên Khoản thu"
+            android:hint="Tên Khoản Chi"
 
-            android:inputType="text"/>
+            android:inputType="text" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_email"
         android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edtsotien"
+            android:id="@+id/edtsotienc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Số tiền"
-            android:inputType="number"/>
+            android:inputType="number" />
 
     </android.support.design.widget.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content">
         <TextView
@@ -75,8 +83,8 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:id="@+id/spiner"
             ></Spinner>
     </LinearLayout>
@@ -86,12 +94,16 @@
         android:layout_height="30dp"
         android:ems="10"
         android:textSize="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Chọn ngày"
         android:inputType="textPersonName" />
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text"
         android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
 
         <EditText
@@ -99,32 +111,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ghi chú"
-            android:inputType="text"/>
+            android:inputType="text" />
 
     </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_margin="10dp"
+        android:gravity="center"
+
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btnadd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:id="@+id/btnadd"
 
-            android:textColor="#ffffff"
-            android:text="Thêm"/>
+            android:text="Update"
+            android:textColor="#ffffff" />
+
         <Button
+            android:id="@+id/btncacal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
             android:background="@color/colorPrimary"
-            android:textColor="#ffffff"
-            android:id="@+id/btncacal"
-            android:text="Hủy"/>
+            android:text="Hủy"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 </LinearLayout>

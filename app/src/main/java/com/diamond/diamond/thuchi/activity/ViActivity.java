@@ -12,9 +12,14 @@ import android.view.View;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.adapter.AdapterVi;
+import com.diamond.diamond.thuchi.model.Chi;
+import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.model.Vi;
+import com.diamond.diamond.thuchi.sqldao.ChiDAO;
+import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 import com.diamond.diamond.thuchi.sqldao.ViDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViActivity extends AppCompatActivity {
@@ -23,6 +28,7 @@ private AdapterVi adapterVi;
 private LinearLayoutManager linearLayoutManager;
 private List<Vi> vis;
 private ViDao viDao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

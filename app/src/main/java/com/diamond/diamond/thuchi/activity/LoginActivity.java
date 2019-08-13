@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,9 +24,20 @@ public class LoginActivity extends AppCompatActivity {
 private GoogleSignInClient mGoogleSignInClient;
 private SignInButton signInButton;
 private Button btnlog;
+private CheckBox ckeck;
 private EditText nameuser;
 private EditText pass;
 int RC_SIGN_IN=0;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null){
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +47,24 @@ int RC_SIGN_IN=0;
          btnlog= findViewById(R.id.ogin);
          nameuser= findViewById(R.id.edtnameuser);
          pass= findViewById(R.id.edtpass);
+         ckeck= findViewById(R.id.ckeck);
+         ckeck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+             @Override
+             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                 if (ckeck.isChecked()){
+                     Toast.makeText(LoginActivity.this, "Đã nhớ", Toast.LENGTH_SHORT).show();
+                 } else {
+                     Toast.makeText(LoginActivity.this, "Bỏ nhớ", Toast.LENGTH_SHORT).show();
+                 }
+
+             }
+         });
+
+
          btnlog.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 if (nameuser.equals("admin") && pass.equals("123456")){
+                 if (nameuser.getText().toString().equals("admin") && pass.getText().toString().equals("123456")){
                      startActivity(new Intent(LoginActivity.this,MainActivity.class));
                  }else {
                      Toast.makeText(LoginActivity.this, "Thông tin tài khoản hoặc mật khẩu sai", Toast.LENGTH_SHORT).show();

@@ -35,7 +35,7 @@ public class ChiDAO {
         contentValues.put(CHI_NAME, chi.namechi);
         contentValues.put(CHI_TIEN, chi.sotien);
         contentValues.put(CHI_DATE, chi.date);
-        contentValues.put(CHI_TEN_VI, chi.tenvi);
+//        contentValues.put(CHI_TEN_VI, chi.tenvi);
         contentValues.put(CHI_GHI_CHU, chi.note);
 
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
@@ -54,7 +54,7 @@ public class ChiDAO {
         contentValues.put(CHI_NAME, chi.namechi);
         contentValues.put(CHI_TIEN, chi.sotien);
         contentValues.put(CHI_DATE, chi.date);
-        contentValues.put(CHI_TEN_VI, chi.tenvi);
+//        contentValues.put(CHI_TEN_VI, chi.tenvi);
         contentValues.put(CHI_GHI_CHU, chi.note);
 
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
@@ -89,14 +89,14 @@ public class ChiDAO {
                 String namechi = cursor.getString(cursor.getColumnIndex(CHI_NAME));
                 String tienchi = cursor.getString(cursor.getColumnIndex(CHI_TIEN));
                 String datechi = cursor.getString(cursor.getColumnIndex(CHI_DATE));
-                String vichi = cursor.getString(cursor.getColumnIndex(CHI_TEN_VI));
+//                String vichi = cursor.getString(cursor.getColumnIndex(CHI_TEN_VI));
                 String notechi = cursor.getString(cursor.getColumnIndex(CHI_GHI_CHU));
                 Chi chi = new Chi();
                 chi.machi = machi;
                 chi.namechi = namechi;
                 chi.date = datechi;
                 chi.sotien = tienchi;
-                chi.tenvi= vichi;
+//                chi.tenvi= vichi;
                 chi.note = notechi;
                 chis.add(chi);
                 cursor.moveToNext();

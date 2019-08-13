@@ -30,9 +30,9 @@ public class InforChiActivity extends AppCompatActivity {
 
         ma=getIntent().getStringExtra("machi");
         name= getIntent().getStringExtra("tenchi");
-        date= getIntent().getStringExtra("sotien");
+        date= getIntent().getStringExtra("ngay");
         note= getIntent().getStringExtra("note");
-        tien= getIntent().getStringExtra("ngay");
+        tien= getIntent().getStringExtra("sotien");
         vi= getIntent().getStringExtra("sovi");
 
         tvmachi.setText(ma);

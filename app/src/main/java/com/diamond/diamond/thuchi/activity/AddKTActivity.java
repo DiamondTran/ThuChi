@@ -48,12 +48,9 @@ String tenvi;
        init();
        Spinner();
        add();
-       tvdate.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               chonngay();
-           }
-       });
+
+       chonngay();
+
         setSupportActionBar(toolbar);
 
 
@@ -61,18 +58,29 @@ String tenvi;
     }
 
 private void chonngay(){
-    final Calendar cal=Calendar.getInstance();
-    int year= cal.get(Calendar.YEAR);
-    int month = cal.get(Calendar.MONTH);
-    int day= cal.get(Calendar.DAY_OF_MONTH);
-    DatePickerDialog date = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+    Thread t = new Thread(){
         @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            SimpleDateFormat simpleDateFormat= new SimpleDateFormat("dd/mm/yyyy");
-            tvdate.setText(simpleDateFormat.format(cal.getTime()));
+        public  void run(){
+            try{
+                while (!isInterrupted()){
+                    Thread.sleep(1000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            long date = System.currentTimeMillis();
+                            SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyy\nhh mm ss a");
+                            String  dateString= sdf.format(date);
+                            tvdate.setText(dateString);
+                        }
+                    });
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-    }, year, month, day);
-    date.show();
+
+    };
+    t.start();
 }
 private void init(){
     tvdate= findViewById(R.id.edtdatet);

@@ -3,78 +3,105 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="5dp"
-    android:layout_margin="5dp"
     android:id="@+id/cradviewchi"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:orientation="horizontal">
+
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/chi"
-            android:layout_margin="10dp"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:orientation="vertical"
-            >
-
-            <TextView
-                android:id="@+id/namechi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Tên khoản chi"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textStyle="italic"
-                android:textSize="20dp"
-                android:id="@+id/namevi"
-                android:text="Ví"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="20dp"
-                android:id="@+id/sotien"
-                android:text="Số tiền"/>
-
-        </LinearLayout>
+            android:id="@+id/imgthu"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/chi" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-android:id="@+id/datechi"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:layout_toRightOf="@id/imgthu"
+            android:textStyle="bold"
+            android:id="@+id/namechi"
+            android:text="Tên Khoản thu"/>
 
-            android:layout_marginTop="50dp"
-            android:text="Ngày tháng"
-            android:textSize="19sp" />
-        <LinearLayout
+        <TextView
+            android:id="@+id/namevi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:id="@+id/imgedit"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/edit"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/imgdelete"
-                android:src="@drawable/delete"/>
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_below="@id/namechi"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/imgthu"
+            android:text="Ví"
+            android:textSize="20dp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/datechi"
+
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày tháng"
+            android:layout_below="@id/namevi"
+            android:layout_marginTop="10dp"
+
+
+            android:layout_toRightOf="@id/imgthu"
+            android:textSize="19sp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/vnd"
+            android:textSize="20dp"
+            android:layout_toLeftOf="@id/imgdelete"
+            android:layout_marginTop="50dp"
+            android:layout_height="wrap_content"
+
+            android:text=" vnd"/>
+
+
+        <TextView
+            android:id="@+id/sotien"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/vnd"
+            android:layout_marginTop="50dp"
+
+            android:text="Số tiền"
+            android:textSize="20dp" />
+
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:id="@+id/imgeditc"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/edit"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/imgdelete"
+            android:src="@drawable/delete"/>
+
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>
