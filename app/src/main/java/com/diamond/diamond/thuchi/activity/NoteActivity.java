@@ -21,7 +21,7 @@ private WebView webView;
         setSupportActionBar(toolbar);
 webView= findViewById(R.id.webview);
 webView.setWebViewClient(new WebViewClient());
-webView.loadUrl("https://vietnamnet.vn/vn/kinh-doanh/thi-truong/");
+webView.loadUrl("http://vietbao.vn/vn/gia-ca-thi-truong/");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

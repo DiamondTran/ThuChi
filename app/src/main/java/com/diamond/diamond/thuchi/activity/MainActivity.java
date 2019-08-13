@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_infor) {
 
         } else if (id == R.id.nav_thongke) {
-            startActivity(new Intent(MainActivity.this, ChiActivity.class));
+            startActivity(new Intent(MainActivity.this, ThongkeActivity.class));
         } else if (id == R.id.nav_exit) {
 moveTaskToBack(true);
 android.os.Process.killProcess(android.os.Process.myPid());

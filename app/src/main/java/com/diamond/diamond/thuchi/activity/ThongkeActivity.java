@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
@@ -29,11 +30,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThongkeActivity extends AppCompatActivity {
-private static String TAG ="ThongkeActivity";
+    private static String TAG = "ThongkeActivity";
 
-private String[] xdata= {"Thu","Chi"};
-PieChart pieChart;
-    int b, tongchi = 0,tong=0;
+    private String[] xdata = {"Thu", "Chi"};
+    PieChart pieChart;
+    private TextView tongdthu, tongchit;
+    int b, tongchi = 0, tong = 0;
     int a, tongthu = 0;
     ArrayList<Integer> integers = new ArrayList<>();
     ArrayList<Integer> integerss = new ArrayList<>();
@@ -43,39 +45,44 @@ PieChart pieChart;
     float c;
     float v;
     private List<Thu> thus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thongke);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-    pieChart= findViewById(R.id.piechart);
-    pieChart.setRotationEnabled(true);
-    pieChart.setHoleRadius(25f);
-    pieChart.setTransparentCircleAlpha(0);
-    pieChart.setCenterText("Thu Chi");
-    pieChart.setCenterTextSize(10);
+        tongdthu = findViewById(R.id.tongdthu);
+        tongchit = findViewById(R.id.tongdchi);
+        pieChart = findViewById(R.id.piechart);
+
+        pieChart.setRotationEnabled(true);
+        pieChart.setHoleRadius(25f);
+        pieChart.setTransparentCircleAlpha(0);
+        pieChart.setCenterText("Thu Chi");
+        pieChart.setCenterTextSize(10);
 //    pieChart.setDrawEntryLabels(true);
         tongthu();
-      addDataSet();
+        addDataSet();
 
-
+        tongdthu.setText(String.valueOf(tongthu));
+        tongchit.setText(String.valueOf(tongchi));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void addDataSet() {
-        float[] ydata= {c,v};
-        ArrayList<PieEntry> yEntry= new ArrayList<>();
-        ArrayList<String> xEntry= new ArrayList<>();
+        float[] ydata = {c, v};
+        ArrayList<PieEntry> yEntry = new ArrayList<>();
+        ArrayList<String> xEntry = new ArrayList<>();
 
-        for (int i =0; i <ydata.length; i++){
-            yEntry.add(new PieEntry(ydata[i],i));
+        for (int i = 0; i < ydata.length; i++) {
+            yEntry.add(new PieEntry(ydata[i], i));
         }
-        for (int i =0; i <xdata.length; i++){
+        for (int i = 0; i < xdata.length; i++) {
             xEntry.add(xdata[i]);
         }
 
-        PieDataSet pieDataSet= new PieDataSet(yEntry, "");
+        PieDataSet pieDataSet = new PieDataSet(yEntry, "");
         pieDataSet.setSliceSpace(2);
 
         pieDataSet.setValueTextSize(12);
@@ -90,11 +97,12 @@ PieChart pieChart;
         legend.setForm(Legend.LegendForm.CIRCLE);
 
 
-        PieData pieData= new PieData(pieDataSet);
+        PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.invalidate();
 
     }
+
     private void tongthu() {
         Thu thu;
         thuDao = new ThuDAO(ThongkeActivity.this);
@@ -107,8 +115,8 @@ PieChart pieChart;
 
         Chi chi;
         chiDAO = new ChiDAO(ThongkeActivity.this);
-        chis= chiDAO.getALLChi();
-        for (int j =0; j<chis.size(); j ++){
+        chis = chiDAO.getALLChi();
+        for (int j = 0; j < chis.size(); j++) {
             chi = chis.get(j);
             b = Integer.parseInt(chi.sotien);
             integerss.add(b);
@@ -123,8 +131,8 @@ PieChart pieChart;
         }
         tong = tongthu + tongchi;
 
-        c= (float) tongthu/tong*100;
-         v=(float) tongchi/tong*100;
+        c = (float) tongthu / tong * 100;
+        v = (float) tongchi / tong * 100;
     }
 
 }
