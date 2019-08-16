@@ -6,9 +6,5 @@
         android:orderInCategory="100"
         android:title="@string/vi"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/chuyentien"
-        android:orderInCategory="100"
-        android:title="Chuyển tiền"
-        app:showAsAction="never" />
+
 </menu>

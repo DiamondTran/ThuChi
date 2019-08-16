@@ -21,7 +21,7 @@ private WebView webView;
         setSupportActionBar(toolbar);
 webView= findViewById(R.id.webview);
 webView.setWebViewClient(new WebViewClient());
-webView.loadUrl("http://vietbao.vn/vn/gia-ca-thi-truong/");
+webView.loadUrl("https://shorturl.at/jmrAZ");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

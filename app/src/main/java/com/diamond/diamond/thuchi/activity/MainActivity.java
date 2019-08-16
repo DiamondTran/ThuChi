@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView tvnameuser;
     private TextView tvtmailuser,sodu;
     View hview;
+
       int b, tongchi = 0,tong=0;
     int a, tongthu = 0;
     ArrayList<Integer> integers = new ArrayList<>();
@@ -125,9 +126,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(MainActivity.this, ViActivity.class));
-        } else if (id == R.id.chuyentien) {
-            startActivity(new Intent(MainActivity.this, ChuyentienActivity.class));
         }
+//        else if (id == R.id.chuyentien) {
+//            startActivity(new Intent(MainActivity.this, ChuyentienActivity.class));
+//        }
 
 
         return super.onOptionsItemSelected(item);

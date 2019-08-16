@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.activity.InforViActivity;
 import com.diamond.diamond.thuchi.activity.MainActivity;
+import com.diamond.diamond.thuchi.activity.ViActivity;
 import com.diamond.diamond.thuchi.model.Chi;
 import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.model.Vi;
@@ -142,7 +143,8 @@ viewHolder.imgedit.setOnClickListener(new View.OnClickListener() {
                 viDao.updateVi(vi);
 
                 Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(context, ViActivity.class);
+                context.startActivity(intent);
                 notifyDataSetChanged();
             }
         });

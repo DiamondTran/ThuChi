@@ -30,9 +30,7 @@ import java.util.List;
 public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
     private Spinner sp;
     private ChiDAO chiDAO;
-    private TextView tvngay;
-    private EditText edtmat,edtnamet,edttient,edtnott;
-    private List<String> namechis;
+
     private Context context;
     private List<Chi> chis;
     private List<Chi> chiss;
@@ -65,7 +63,7 @@ public class AdapterChi extends RecyclerView.Adapter<AdapterChi.ViewHolder> {
                 intent.putExtra("tenchi", viewHolder.chi.namechi);
                 intent.putExtra("sotien", viewHolder.chi.sotien);
                 intent.putExtra("ngay", viewHolder.chi.date);
-                intent.putExtra("sovi", viewHolder.chi.tenvi);
+                intent.putExtra("sovi", viewHolder.tvtenvi.getText());
                 intent.putExtra("note", viewHolder.chi.note);
                 context.startActivity(intent);
             }

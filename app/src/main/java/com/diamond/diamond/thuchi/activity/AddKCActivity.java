@@ -17,8 +17,10 @@ import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
 import com.diamond.diamond.thuchi.model.Chi;
+import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.model.Vi;
 import com.diamond.diamond.thuchi.sqldao.ChiDAO;
+import com.diamond.diamond.thuchi.sqldao.ThuDAO;
 import com.diamond.diamond.thuchi.sqldao.ViDao;
 
 import java.text.SimpleDateFormat;
@@ -39,7 +41,10 @@ public class AddKCActivity extends AppCompatActivity {
     private List<Vi> vis;
     private Button btncancal;
     String tenvi;
-
+    int a, tongthu = 0;
+    private ThuDAO thuDao;
+    private List<Thu> thus;
+    ArrayList<Integer> integers = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,7 @@ public class AddKCActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         init();
+        tongkthu();
         Spinner();
         chonngay();
         add();
@@ -149,8 +155,15 @@ public class AddKCActivity extends AppCompatActivity {
 
 
                 if (chi.machi.matches("")) {
-                    edtmakc.setError("Không được nhập trống");
-                } else if (chi.namechi.matches("")) {
+                    edtmakc.setError("Không được nhập trống"); }
+                else if (chi.sotien.matches("")){
+                    edttienc.setError("Không được nhập trống");
+                }else if (Integer.parseInt(chi.sotien) <= 0){
+                    edttienc.setError("Giá phải lớn hơn không");
+                } else if (Integer.parseInt(chi.sotien ) > tongthu){
+                    Toast.makeText(AddKCActivity.this, "Số sư trong ví không đủ", Toast.LENGTH_SHORT).show();
+                }
+                else if (chi.namechi.matches("")) {
                     edttenkc.setError("Không được nhập trống");
                 } else if (edttenkc.equals("")) {
                     edttienc.setError("Không được nhập trống");
@@ -167,6 +180,21 @@ public class AddKCActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void tongkthu(){
+        Thu thu;
+        thuDao = new ThuDAO(AddKCActivity.this);
+        thus = thuDao.getALLThu();
+        for (int i = 0; i < thus.size(); i++) {
+            thu = thus.get(i);
+            a = Integer.parseInt(thu.date);
+            integers.add(a);
+        }
+        for (Integer element : integers) {
+            tongthu += element;
+
+        }
+
     }
 
 }

@@ -149,7 +149,9 @@ private void add(){;
                     edttenkt.setError("Không được nhập trống");
                 }  else if (thu.sotien.matches("")) {
                     edttien.setError("Không được nhập trống");
-                }  else if (thu.tenvi.matches("")) {
+                }else if (Integer.parseInt(thu.sotien) <= 0){
+                    edttien.setError("Giá phải lớn hơn không");
+                } else if (thu.tenvi.matches("")) {
                     Toast.makeText(AddKTActivity.this, "Phải chọn ví", Toast.LENGTH_SHORT).show();
                 }  else if (thu.date.matches("")) {
                     tvdate.setError("Không được nhập trống");

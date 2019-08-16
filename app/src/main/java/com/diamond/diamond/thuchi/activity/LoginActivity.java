@@ -20,7 +20,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
-public class LoginActivity extends AppCompatActivity {
+public class    LoginActivity extends AppCompatActivity {
 private GoogleSignInClient mGoogleSignInClient;
 private SignInButton signInButton;
 private Button btnlog;
