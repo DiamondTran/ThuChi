@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             thuDao.deleteAll();
             viDAO.deleteAll();
             chiDAO.deleteAll();
-            sodu.setText("");
+            sodu.setText("0");
             Toast.makeText(this, "Đã xóa toàn bộ dữ liệu", Toast.LENGTH_SHORT).show();
 //            signOut();
         } else if (id == R.id.nav_infor) {
