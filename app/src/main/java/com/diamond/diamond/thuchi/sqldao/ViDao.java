@@ -11,6 +11,7 @@ import com.diamond.diamond.thuchi.model.Vi;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.diamond.diamond.thuchi.Constans.CHI_TABLE;
 import static com.diamond.diamond.thuchi.Constans.VI_MA;
 import static com.diamond.diamond.thuchi.Constans.VI_TONG_CHI;
 import static com.diamond.diamond.thuchi.Constans.VI_TONG_THU;
@@ -58,6 +59,12 @@ public class ViDao {
         sqLiteDatabase.close();
 
         return result;
+    }
+    public void deleteAll()
+    {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("delete from "+ VI_TABLE);
+        db.close();
     }
 
     public long deleteVi(String mavi) {

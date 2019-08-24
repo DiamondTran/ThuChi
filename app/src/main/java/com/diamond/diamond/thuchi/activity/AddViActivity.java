@@ -53,6 +53,7 @@ public class AddViActivity extends AppCompatActivity {
                     edtnamevi.setError("Không được nhập trống");
                 } else {
                     viDao.insertVi(vi);
+
                     Toast.makeText(AddViActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddViActivity.this,ViActivity.class));
                 }

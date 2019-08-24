@@ -18,9 +18,10 @@
             android:icon="@drawable/outline_insert_chart_white_18dp"
             android:title="Thống kê" />
         <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_send"
-            android:title="Đăng xuất" />
+            android:id="@+id/nav_reset"
+            android:icon="@drawable/reset"
+            android:title="Reset" />
+
     </group>
 
     <item android:title="Communicate">

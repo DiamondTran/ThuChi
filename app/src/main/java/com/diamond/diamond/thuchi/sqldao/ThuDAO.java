@@ -45,6 +45,12 @@ public class ThuDAO {
 
         return result;
     }
+    public void deleteAll()
+    {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("delete from "+ THU_TABLE);
+        db.close();
+    }
 
     public long updateThu(Thu thu) {
         long result = -1;

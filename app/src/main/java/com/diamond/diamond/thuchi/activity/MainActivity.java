@@ -1,5 +1,6 @@
 package com.diamond.diamond.thuchi.activity;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.diamond.diamond.thuchi.model.Chi;
 import com.diamond.diamond.thuchi.model.Thu;
 import com.diamond.diamond.thuchi.sqldao.ChiDAO;
 import com.diamond.diamond.thuchi.sqldao.ThuDAO;
+import com.diamond.diamond.thuchi.sqldao.ViDao;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView tvtmailuser,sodu;
     View hview;
 
+    private ViDao viDAO;
       int b, tongchi = 0,tong=0;
     int a, tongthu = 0;
     ArrayList<Integer> integers = new ArrayList<>();
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
+        viDAO= new ViDao(this);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -145,10 +149,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(MainActivity.this, ChiActivity.class));
         } else if (id == R.id.nav_thu) {
             startActivity(new Intent(MainActivity.this, ThuActivity.class));
-        } else if (id == R.id.nav_tools) {
-            signOut();
+        } else if (id == R.id.nav_reset) {
+            thuDao.deleteAll();
+            viDAO.deleteAll();
+            chiDAO.deleteAll();
+            sodu.setText("");
+            Toast.makeText(this, "Đã xóa toàn bộ dữ liệu", Toast.LENGTH_SHORT).show();
+//            signOut();
         } else if (id == R.id.nav_infor) {
-
+        startActivity(new Intent(MainActivity.this, NotificationManager.class));
         } else if (id == R.id.nav_thongke) {
             startActivity(new Intent(MainActivity.this, ThongkeActivity.class));
         } else if (id == R.id.nav_exit) {

@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.diamond.diamond.thuchi.R;
+import com.diamond.diamond.thuchi.sqldao.ChiDAO;
+import com.diamond.diamond.thuchi.sqldao.ThuDAO;
+import com.diamond.diamond.thuchi.sqldao.ViDao;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,6 +29,9 @@ private SignInButton signInButton;
 private Button btnlog;
 private CheckBox ckeck;
 private EditText nameuser;
+private ChiDAO chiDAO;
+private ThuDAO thuDAO;
+private ViDao viDAO;
 private EditText pass;
 int RC_SIGN_IN=0;
 
@@ -47,6 +53,9 @@ int RC_SIGN_IN=0;
          btnlog= findViewById(R.id.ogin);
          nameuser= findViewById(R.id.edtnameuser);
          pass= findViewById(R.id.edtpass);
+        chiDAO= new ChiDAO(this);
+        thuDAO= new ThuDAO(this);
+        viDAO= new ViDao(this);
          ckeck= findViewById(R.id.ckeck);
          ckeck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
              @Override
@@ -65,6 +74,7 @@ int RC_SIGN_IN=0;
              @Override
              public void onClick(View v) {
                  if (nameuser.getText().toString().equals("admin") && pass.getText().toString().equals("123456")){
+
                      startActivity(new Intent(LoginActivity.this,MainActivity.class));
                  }else {
                      Toast.makeText(LoginActivity.this, "Thông tin tài khoản hoặc mật khẩu sai", Toast.LENGTH_SHORT).show();
@@ -112,6 +122,10 @@ int RC_SIGN_IN=0;
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
+
+            thuDAO.deleteAll();
+            viDAO.deleteAll();
+            chiDAO.deleteAll();
             Intent intent= new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         } catch (ApiException e) {

@@ -76,19 +76,10 @@
         android:id="@+id/sign_in_button"
         android:layout_width="300dp"
         android:layout_height="59dp"
-        android:layout_above="@id/dk"
+     android:layout_below="@+id/ogin"
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:textColor="#8290f4"
-        android:id="@+id/dk"
-        android:layout_gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_centerHorizontal="true"
-        android:text="Bạn chưa có tài khoản ?"/>
+
 </RelativeLayout>

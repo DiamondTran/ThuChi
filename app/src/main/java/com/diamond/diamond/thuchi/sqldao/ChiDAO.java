@@ -74,6 +74,12 @@ public class ChiDAO {
                 new String[]{machi});
         return result;
     }
+    public void deleteAll()
+    {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db.execSQL("delete from "+ CHI_TABLE);
+        db.close();
+    }
 
     public List<Chi> getALLChi() {
         List<Chi> chis = null;
